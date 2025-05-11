@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/borrows")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class BookBorrowingController {
 
     private final BookBorrowingService bookBorrowingService;
