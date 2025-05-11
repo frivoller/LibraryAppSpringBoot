@@ -18,12 +18,17 @@ public class OpenApiConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
+        // Hem HTTP hem de HTTPS server ekliyoruz, ikisine de izin veriyoruz
         Server httpsServer = new Server()
                 .url("https://advisory-slug-frivoller-95937079.koyeb.app")
                 .description("HTTPS Server");
+                
+        Server httpServer = new Server()
+                .url("http://advisory-slug-frivoller-95937079.koyeb.app")
+                .description("HTTP Server");
 
         return new OpenAPI()
-                .servers(Arrays.asList(httpsServer))
+                .servers(Arrays.asList(httpsServer, httpServer)) // Her iki server da kullanılabilir
                 .info(new Info()
                         .title("Kütüphane Yönetim API")
                         .version("1.0")

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CORS-Free Swagger UI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui.css">
+    <style>
+        html { box-sizing: border-box; overflow: -moz-scrollbars-vertical; overflow-y: scroll; }
+        *, *:before, *:after { box-sizing: inherit; }
+        body { margin: 0; padding: 0; }
+        .info { margin: 20px; }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h2>CORS Free Swagger UI</h2>
+        <p>Bu sayfa CORS kısıtlamalarını atlayarak doğrudan HTTP üzerinden API'ye erişim sağlar.</p>
+    </div>
+    <div id="swagger-ui"></div>
+    
+    <script src="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui-standalone-preset.js"></script>
+    <script>
+    window.onload = function() {
+        // API URL
+        const url = "http://advisory-slug-frivoller-95937079.koyeb.app/v3/api-docs";
+        
+        // Swagger UI yapılandırması
+        const ui = SwaggerUIBundle({
+            url: url,
+            dom_id: '#swagger-ui',
+            deepLinking: true,
+            presets: [
+                SwaggerUIBundle.presets.apis,
+                SwaggerUIStandalonePreset
+            ],
+            layout: "StandaloneLayout",
+            defaultModelsExpandDepth: -1,
+            requestInterceptor: (req) => {
+                // Origin ve host headerlarını sil, CORS hatası önlemek için
+                if (req.headers) {
+                    delete req.headers['Origin'];
+                    delete req.headers['Host'];
+                }
+                // Content-Type ekle
+                req.headers = {
+                    ...req.headers,
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                };
+                return req;
+            }
+        });
+        
+        // HTTP sunucusunu varsayılan seç
+        ui.specActions.updateJsonSpec({
+            ...ui.specSelectors.specJson().toJS(),
+            servers: [
+                {
+                    url: "http://advisory-slug-frivoller-95937079.koyeb.app",
+                    description: "HTTP Server (CORS-Free)"
+                }
+            ]
+        });
+        
+        window.ui = ui;
+    }
+    </script>
+</body>
+</html> 
