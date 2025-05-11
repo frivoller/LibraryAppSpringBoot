@@ -1,0 +1,19 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Kütüphane Yönetim Sistemi API'si",
+    "version": "1.0",
+    "title": "Kütüphane Yönetim API"
+  },
+  "host": "advisory-slug-frivoller-95937079.koyeb.app",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ]
+} 
