@@ -10,10 +10,11 @@ import java.util.List;
 
 @Configuration
 public class SwaggerConfig {
+
     @Bean
     public OpenAPI customOpenAPI() {
         Server server = new Server();
-        server.setUrl("https://advisory-slug-frivoller-95937079.koyeb.app");
+        server.setUrl("https://advisory-slug-frivoller-95937079.koyeb.app"); // Prod server URL'si
         server.setDescription("Production Server");
 
         return new OpenAPI()
@@ -21,6 +22,6 @@ public class SwaggerConfig {
                         .title("Library Management API")
                         .version("1.0.0")
                         .description("API for Library Management"))
-                .servers(List.of(server));
-    }
-} 
+                .servers(List.of(server));  // Swagger'a hangi sunucuya bağlanacağını belirtir
+    }
+}
