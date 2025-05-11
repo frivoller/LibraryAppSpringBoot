@@ -20,7 +20,8 @@ public class CorsConfig {
                         .allowedOriginPatterns(
                                 "http://localhost:8080",
                                 "https://advisory-slug-frivoller-95937079.koyeb.app",
-                                "http://advisory-slug-frivoller-95937079.koyeb.app"
+                                "http://advisory-slug-frivoller-95937079.koyeb.app",
+                                "https://lovely-bublanina-452bec.netlify.app"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
