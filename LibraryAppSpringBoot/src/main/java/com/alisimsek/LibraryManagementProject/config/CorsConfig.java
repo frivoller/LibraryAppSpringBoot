@@ -13,11 +13,11 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/")
+                registry.addMapping("/")  // Tüm endpointleri kapsar
                         .allowedOriginPatterns(
                                 "http://localhost:8080", 
                                 "https://advisory-slug-frivoller-95937079.koyeb.app", 
-                                "https://advisory-slug-frivoller-95937079.koyeb.app"
+                                "https://lovely-bublanina-452bec.netlify.app"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
